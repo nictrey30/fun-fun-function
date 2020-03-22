@@ -12,6 +12,10 @@ module.exports = function createStore() {
     }
   };
   return {
-    get: (table, id) => tables[table][id]
+    get: (table, id) => delay(1000).then(() => tables[table][id])
   };
 };
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
